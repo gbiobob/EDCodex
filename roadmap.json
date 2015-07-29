@@ -1,0 +1,174 @@
+[
+  {
+    "id": "Entries list",
+    "features": [
+      {"status": "done", "title": "List with title, author, excerpt, mini-icons fot types (trade, routes, wiki)" },
+      {"status": "done", "title": "Navigation with a one depth menu" },
+      {"status": "done", "title": "Search Filters : by category" },
+      {"status": "done", "title": "Search Filters : by platform" },
+      {"status": "planned", "title": "Search Filters : by lang" },
+      {"status": "done", "title": "Full text search and autocomplete : add authors to make search on" , "date" : "2015-06-29"},
+      {"status": "done", "title": "Order by : date add" },
+      {"status": "done", "title": "Order by : date update" },
+      {"status": "done", "title": "Order by : alphabetical" },
+      {"status": "done", "title": "Add folding/collapse for entries" },
+      {"status": "maybe_later", "title": "As an option for registered users : Add an improved folding/collapse with all infos about the entry when open" },
+      {"status": "planned", "title": "Add a way to save user choice : reduce or expend view (in a session for unconnected users, as an account option for registered)" },
+
+      {"status": "maybe_later", "title": "Grouped Actions<br/>-add a checkbox on each entry of a list<br/>-add a checkbox on top of the list to check/unckeck all<br/>-at the top and bottom, add buttons for grouper actions : export (Json, wiki, text, ...), add/remove from favourite"},
+
+      {"status": "maybe_later", "title": "For the page ALL : maybe split the full list with categories header"},
+
+      {"status":"done" ,"title": "On mouse over category icon : add tooltip", "date" : "2015-06-29"},
+      {"status":"done" ,"title": "Add some ajax request on filtering list + search", "date" : "2015-07-08"},
+
+      {"status": "planned", "title": "Add a faceted search with more criteria" }
+    ]
+  },
+  {
+    "id": "Categorization",
+    "features": [
+      {"status": "done", "title": "Add multiple category for entries (Trade, Fighting, Exploration, Routes, ...)" },
+      {"status": "done", "title": "A category can have subcategories (database shema allow it but not used at this time, maybe later if needed)" },
+      {"status": "maybe_later", "title": "Add a Community type for communities websites" },
+      {"status": "done", "title": "Admin : Add / Edit categories" },
+      {"status": "done", "title": "Admin : on edit : we can set a name, full name, icon, description" },
+      {"status": "planned", "title": "Admin : on edit : add fields for seo" }
+    ]
+  },
+  {
+    "id": "Entry detail - list of fields",
+    "features": [
+      {"status":"done" ,"title": "Title"},
+      {"status":"done" ,"title": "Categories. A tool can belong to multiple categories."},
+      {"status":"workinprogress" ,"title": "Creators. A tool can have been built by multiple commanders. Status: single author implemented (DB shema allow multiple authos, work in progress for edit view)"},
+      {"status":"planned" ,"title": "Contributors (for media, translations, ...) "},
+      {"status":"done" ,"title": "Licence : Free, GPL, Paid OK. A tool could have multiple licenses. "},
+      {"status":"done" ,"title": "Download link"},
+      {"status":"done" ,"title": "Website url"},
+      {"status":"done" ,"title": "Thread url. A tool can have multiple thread urls."},
+      {"status":"done" ,"title": "Date Add / Date submission (auto filled fields)"},
+      {"status":"done" ,"title": "Date release. When was the tool first released publicly. ", "date" : "2015-07-06"},
+      {"status":"done" ,"title": "Last update date OK. Status: implemented."},
+      {"status":"done" ,"title": "Status : Active / In development / No more updated / OK. "},
+      {"status":"done" ,"title": "Revision number", "date" : "2015-07-06"},
+      {"status":"done" ,"title": "Presentation Full description."},
+      {"status":"done" ,"title": "History list. Folded by default (show only the last 3 updates) + a button to show the complete update list (who did it, date, comment)"},
+      {"status":"planned" ,"title": "Main features list"},
+      {"status":"done" ,"title": "Offer an API or not (and small description to describe the api functionnalities)", "date" : "2015-06-29"},
+      {"status":"done" ,"title": "Using an API : specify API you use on your tool", "date" : "2015-06-29"},
+      {"status":"done" ,"title": "languages supported OK. Status: implemented. "},
+      {"status":"done" ,"title": "OS required : multiplatform (like webapp, java, ...), Windows, MacOS, Android, one day maybe Linux :) , ...", "date" : "2015-07-06"},
+      {"status":"done" ,"title": "Software required : Python, .Net framework, java, excel (see some app that need it)"},
+      {"status":"planned" ,"title": "Screenshots. OK"},
+      {"status":"done" ,"title": "Credits : for external ressources, design, … OK. "},
+      {"status":"planned" ,"title": "Copyright if paid app (in case of paid application to specify who his the owner (company name) / trademark)"},
+      {"status":"planned" ,"title": "Reviews with moderation"},
+      {"status":"planned" ,"title": "Voting mechanism so commanders how good a tool is. Low priority. (Can group it with review)"},
+      {"status":"planned" ,"title": "User's comments (need someone to moderate)"},
+      {"status":"planned" ,"title": "Link a tool with an other tool of the databse (useful for tools using an API)"},
+      {"status":"planned" ,"title": "Social links dedicated to the app."},
+      {"status":"todo" ,"title": "Claim this tool function"},
+      {"status":"done", "title": "Add a confirm dialog on remove button", "date" : "2015-06-15" },
+      {"status":"todo", "title": "Set update field as mandatory" },
+
+      {"status":"todo", "title": "Give somes access for existing tools for the realease :<br/>1.I generate a list of unique links for each author : think link go direclty to the subscription page but with a secret field to allow me to link the user registration to his tools<br/>2.we create a simple message for the author and add the link at the bottom<br/>3.we send them their message by MP on frontier forum" },
+      {"status":"workinprogress", "title": "For tools owner, give them the ability to give access to other members" },
+      {"status":"todo", "title": "Add the possibility to enable / disable moderation process on first submit to allow us to open / close the moderation sumbit process" },
+
+      {"status":"todo", "title": "Add rights for Redactors (news writers)" },
+      {"status":"done", "title": "Add some alphabetical sort on some fields in edition", "date" : "2015-07-18"  },
+      {"status":"done", "title": "Category name on a detail should be clickable", "date" : "2015-07-18"  }
+
+     ]
+  },
+  {
+    "id": "Entry type",
+    "features": [
+      {"status":"done" ,"title": "Tool entry"},
+      {"status":"done" ,"title": "Thread / wiki entry"},
+      {"status":"done" ,"title": "Video entry - 1. Video/tutorial"},
+      {"status":"planned" ,"title": "Video entry - 2. An 'Elite TV like to retrive video feeds and official video'"},
+      {"status":"done" ,"title": "News entry"},
+      {"status":"workinprogress" ,"title": "Community entry : community websites / forums / personnal logbook"}
+    ]
+  },
+  {
+    "id": "Entry detail - history / revisions",
+    "features": [
+
+      {"status":"planned" ,"title": "Add warning or forbid to disable a tools with an api used by an other tool "},
+      {"status":"done" ,"title": "History of updates on a tool"},
+      {"status":"done" ,"title": "Open/close on moderated/trash list"},
+      {"status":"planned" ,"title": "Compare two revision"},
+      {"status":"planned" ,"title": "Back to a previous revision"},
+      {"status":"done" ,"title": "On update add possibility to comment a revision"},
+
+      {"status":"done", "title": "Make possible to definitivly move to archive an entry (remove it from global history), right only for admins.", "date" : "2015-06-29" }
+    ]
+  },
+  {
+    "id": "SEO",
+    "features": [
+      {"status":"done" ,"title": "Add customs TITLE depending on content page"},
+      {"status":"workinprogress" ,"title": "Add some canonical url when needed"},
+      {"status":"done" ,"title": "Add microdata markup on each tool", "date" : "2015-07-16" }
+    ]
+  },
+  {
+    "id": "Cross navigation",
+    "features": [
+      {"status":"done" ,"title": "At bottom of an entry : add random list of related thread/tool (shared category)"}
+    ]
+  },
+  {
+    "id": "API",
+    "features": [
+      {"status":"done" ,"title": "JSON export of entries", "date" : "2015-07-17"}
+    ]
+  },
+  {
+    "id": "RSS",
+    "features": [
+      {"status":"workinprogress" ,"title": "RSS feeds"},
+      {"status":"todo" ,"title": "Generate the feed depending on favorites of the user AND/OR the user check some categories and got a feed with only what is interrested on."},
+      {"status":"todo", "title": "updated feed should also display the change which was made and was entered in the 'Describe shortly your update' field when the entry was edited. At the moment in the form this field is not required and can be left blank"},
+
+      {"status":"todo" ,"title": "Crontask : 1 minutes delay"}
+
+    ]
+  },
+  {
+    "id": "Export",
+    "features": [
+      {"status":"done" ,"title": "Text export on each entry to be pasted on forum", "date" : "2015-06-15" },
+      {"status":"maybe_later" ,"title": "BBCode export on each entry to be pasted on forum"},
+      {"status":"maybe_later" ,"title": "WIKI export"},
+      {"status":"maybe_later" ,"title": "Get last comments on reddit for tools wich have a dedicated subject"}
+    ]
+  },
+  {
+    "id": "Registered users",
+    "features": [
+      {"status":"done" ,"title": "Classic registration process"},
+      {"status":"maybe_later" ,"title": "Open-id and/or facebook connect"},
+      {"status":"done" ,"title": "Personal information, contact & privacy"},
+      {"status":"done" ,"title": "My submissions / updates list"},
+      {"status":"todo" ,"title": "My apps (where i'm the creator)"},
+      {"status":"todo" ,"title": "Give access to other creators on my own app."},
+      {"status":"planned" ,"title": "social links of the user / author"},
+      {"status":"planned" ,"title": "Optionnal presentation of the author"},
+      {"status":"planned" ,"title": "Author public page to resume all his work"},
+      {"status":"planned" ,"title": "Options to choose datetime format & timezone"},
+      {"status":"done" ,"title": "Add some entries as favorites"},
+      {"status":"done" ,"title": "My personnal favorite list (retrieve all tools marked as favorite)"}
+    ]
+  },
+  {
+    "id": "Common",
+    "features": [
+      {"status":"done" ,"title": "Add dark theme", "date" : "2015-07-07"},
+      {"status":"maybe_later" ,"title": "Add a collaborative tools to discuss on new functionnalities or issues"}
+    ]
+  }
+]
