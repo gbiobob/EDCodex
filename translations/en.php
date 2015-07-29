@@ -1,6 +1,6 @@
 <?php
 $locale = array(
-  'separator#1'          => '=============== Navigation ====================',
+  // =============== Navigation ================================================
   'home'                 => 'Home',
   'news'                 => 'Announcements',
   'tools'                => 'Tools',
@@ -29,14 +29,14 @@ $locale = array(
   'mysubmit'             => 'My submissions',
   'account'              => 'Account',
   'users'                => 'Registered users',
-  'separator#9'          => '=============== Toolbar filters ===============',
+  // =============== Toolbar filters ===========================================
   'cat'                  => 'Category',
   'sort'                 => 'Sort',
   'sort_upd'             => 'Last Updated',
   'sort_new'             => 'New submissions',
   'sort_mostupd'         => 'Most updated',
   'sort_name'            => 'Alphabetical',
-  'separator#3'          => '=============== Link type =====================',
+  // =============== Link type =================================================
   'add_link'             => 'Add a link',
   'url'                  => 'URL',
   'url_title'            => 'Name',
@@ -49,14 +49,14 @@ $locale = array(
   'link_videos'          => 'Videos',
   'link_other'           => 'Other',
   'link_download'        => 'Download',
-  'separator#4'          => '=============== Entry type ====================',
+  // =============== Entry type ================================================
   'type'                 => 'Type of entry',
   'choose_an_entry_type' => 'Choose the type of entry',
   'change_type'          => 'Change entry type',
   'tool'                 => 'Tool',
   'video'                => 'Video / Playlist / Live channel',
   'thread'               => 'Thread',
-  'separator#5'          => '=============== Platform ======================',
+  // =============== Platform ==================================================
   'Choose_a_platform'    => 'Choose a platform',
   'web_app'              => 'Web application',
   'win'                  => 'Windows',
@@ -67,7 +67,7 @@ $locale = array(
   'win_phone'            => 'Windows phone',
   'xbox_one'             => 'Xbox One',
 
-  'separator#6'          => '=============== Toolbar =======================',
+  // =============== Toolbar ===================================================
   'enable'               => 'Enable tool',
   'disable'              => 'Disable tool',
   'export'               => 'Export',
@@ -76,7 +76,7 @@ $locale = array(
   'edit_entry'           => 'Edit this entry',
   'claim_owner'          => 'Claim ownership',
   'report'               => 'Report',
-  'separator#7'          => '=============== Common fields =================',
+  // =============== Common fields =============================================
   'tool_title'           => 'Title',
   'short_desc'           => 'Short description (max. 500 chars)',
   'long_desc'            => 'Full description',
@@ -117,20 +117,20 @@ $locale = array(
   'misc'                 => 'Misc',
   'with_sources'         => 'Sources available',
   'API'                  => 'API',
-  'separator#12'         => '=============== MISC =========================',
+  // =============== MISC ======================================================
   'all'                  => 'All',
   'Cancel'               => 'Cancel',
   'Save'                 => 'Save',
   'news_updates'         => 'News & updates',
   'hide_details'         => 'Hide Details',
   'show_details'         => 'Show Details',
-  'separator#8'          => '=============== Feeds =========================',
+  // =============== Feeds =====================================================
   'feed_all'             => 'Full EDTL feed',
   'feed_news'            => 'EDTL News feed',
   'feed_tools'           => 'Tools entries',
   'feed_threads'         => 'Threads entries',
   'feed_videos'          => 'videos entries',
-  'separator#10'         => '=============== Admin =========================',
+  // =============== Admin =====================================================
   'succes_u_grp_add'     => 'User successfully added to the group'
 );
 ?>
