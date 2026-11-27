@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en" data-direction="telemetry">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <script>
+    try {
+      var savedScheme = localStorage.getItem("edcodex-color-scheme");
+      if (savedScheme === "light" || savedScheme === "dark") {
+        document.querySelector('meta[name="color-scheme"]').content = savedScheme;
+      }
+      var params = new URLSearchParams(location.search);
+      var dirParam = params.get("dir");
+      var savedDir = dirParam || localStorage.getItem("edcodex-direction");
+      if (savedDir === "telemetry" || savedDir === "editorial" || savedDir === "command") {
+        document.documentElement.setAttribute("data-direction", savedDir);
+      }
+    } catch (e) {}
+  </script>
+  <title>EDCodex — Elite: Dangerous Third-Party Tools Directory</title>
+  <link rel="icon" href="../favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Orbitron:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/directions.css">
+</head>
+<body>
+  <a href="#main-heading" class="skip-link visually-hidden">Skip to content</a>
+
+  <header class="top-bar">
+    <div class="wrap header-inner">
+      <a href="#home" class="brand-link" data-nav="home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <polygon points="12 2 21 7 21 17 12 22 3 17 3 7"></polygon>
+            <circle cx="12" cy="12" r="3"></circle>
+          </svg>
+        </span>
+        <span>EDCodex</span>
+      </a>
+
+      <nav class="primary-nav" aria-label="Primary">
+        <ul class="nav-list">
+          <li><a href="#home" class="nav-link" data-nav="home">Home</a></li>
+          <li><a href="#tools" class="nav-link" data-nav="tools">Tools</a></li>
+          <li><a href="#tool/631" class="nav-link" data-nav="detail">Sample Tool</a></li>
+          <li><a href="https://edcodex.info/?m=api" class="nav-link" target="_blank" rel="noopener">API</a></li>
+          <li><a href="https://edcodex.info/?m=threads" class="nav-link" target="_blank" rel="noopener">Threads</a></li>
+          <li><a href="https://edcodex.info/?m=community" class="nav-link" target="_blank" rel="noopener">Community</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button type="button" class="header-search-trigger" commandfor="quick-search-dialog" command="show-modal" aria-label="Search entries">
+          <span style="display: inline-flex; align-items: center; gap: 0.4rem;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.3-4.3"></path>
+            </svg>
+            <span class="header-search-label">Search entries…</span>
+          </span>
+          <span class="kbd-hint" aria-hidden="true">Ctrl K</span>
+        </button>
+
+        <button type="button" class="icon-btn" popovertarget="toolbox-popover">
+          <span>Toolbox</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+
+        <button type="button" class="icon-btn" popovertarget="theme-popover" aria-label="Color theme">
+          <span class="theme-branch-light" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32 1.41-1.41"></path>
+            </svg>
+          </span>
+          <span class="theme-branch-dark" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </span>
+          <span class="visually-hidden">Theme settings</span>
+        </button>
+
+        <button type="button" class="btn btn-primary" commandfor="submit-dialog" command="show-modal">
+          Submit entry
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Viewport-Aware Popovers (Plain button/link groups, no role="menu") -->
+  <div id="toolbox-popover" popover="auto" class="popover-panel anchored-overlay">
+    <p class="popover-heading">EDCodex Resources</p>
+    <ul class="popover-list">
+      <li><a href="https://edcodex.info/?m=about" class="popover-item" target="_blank" rel="noopener">About EDCodex</a></li>
+      <li><a href="https://edcodex.info/?m=roadmap" class="popover-item" target="_blank" rel="noopener">Roadmap</a></li>
+      <li><a href="https://edcodex.info/?m=rss" class="popover-item" target="_blank" rel="noopener">RSS Feeds</a></li>
+      <li><a href="https://edcodex.info/?p=login" class="popover-item" target="_blank" rel="noopener">Commander Login</a></li>
+      <li><a href="https://edcodex.info/?p=register" class="popover-item" target="_blank" rel="noopener">Register Account</a></li>
+    </ul>
+  </div>
+
+  <div id="theme-popover" popover="auto" class="popover-panel anchored-overlay">
+    <p class="popover-heading">Color Scheme</p>
+    <div class="popover-list" id="theme-options">
+      <button type="button" class="popover-item" data-scheme="system" aria-pressed="true">
+        <span id="theme-system-label">System</span>
+      </button>
+      <button type="button" class="popover-item" data-scheme="light" aria-pressed="false">
+        <span>Light</span>
+      </button>
+      <button type="button" class="popover-item" data-scheme="dark" aria-pressed="false">
+        <span>Darkside</span>
+      </button>
+    </div>
+  </div>
+
+  <div id="live-announcer" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
+
+  <main id="main-content" class="wrap"></main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <h2>About</h2>
+          <ul class="footer-links">
+            <li><a href="https://edcodex.info/?m=about" target="_blank" rel="noopener">About EDCodex</a></li>
+            <li><a href="https://edcodex.info/?m=who" target="_blank" rel="noopener">Who we are?</a></li>
+            <li><a href="https://edcodex.info/?m=roadmap" target="_blank" rel="noopener">Roadmap</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>EDCodex</h2>
+          <ul class="footer-links">
+            <li><a href="#tools" data-nav="tools">Tools Directory (320)</a></li>
+            <li><a href="https://edcodex.info/?m=api" target="_blank" rel="noopener">Public API</a></li>
+            <li><a href="https://edcodex.info/?m=rss" target="_blank" rel="noopener">RSS Feeds</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Privacy &amp; Community</h2>
+          <ul class="footer-links">
+            <li><a href="https://edcodex.info/?m=privacy" target="_blank" rel="noopener">Legal &amp; Privacy policy</a></li>
+            <li><a href="https://edcodex.info/?m=contact" target="_blank" rel="noopener">Contact</a></li>
+            <li><a href="https://edcodex.info/?m=sitemap" target="_blank" rel="noopener">Sitemap</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer-disclaimer">
+        EDCodex is an unofficial website about the game Elite: Dangerous (property of Frontier Developments).
+      </p>
+    </div>
+  </footer>
+
+  <!-- Native Modal Dialogs (closedby="any", overscroll-behavior: contain, no redundant ARIA) -->
+  <dialog id="quick-search-dialog" closedby="any" aria-labelledby="quick-search-title">
+    <div class="dialog-header">
+      <h1 id="quick-search-title" class="dialog-title">Quick Search</h1>
+      <button type="button" class="icon-btn" commandfor="quick-search-dialog" command="close" aria-label="Close quick search">Close</button>
+    </div>
+    <div class="dialog-body">
+      <search>
+        <label for="quick-search-input" class="filter-label">Search tools, authors, or categories</label>
+        <input id="quick-search-input" class="field-input" type="search" placeholder="e.g. EliteMining, DLSS, ViperDude…" autofocus>
+      </search>
+      <ul id="quick-search-results" class="popover-list"></ul>
+    </div>
+  </dialog>
+
+  <dialog id="export-dialog" closedby="any" aria-labelledby="export-dialog-title">
+    <div class="dialog-header">
+      <h1 id="export-dialog-title" class="dialog-title">Export Entry</h1>
+      <button type="button" class="icon-btn" commandfor="export-dialog" command="close" aria-label="Close export dialog">Close</button>
+    </div>
+    <div class="dialog-body">
+      <div class="tag-list" id="export-format-tabs">
+        <button type="button" class="btn" data-export-format="text">Forum Text</button>
+        <button type="button" class="btn" data-export-format="bbcode">BBCode</button>
+        <button type="button" class="btn" data-export-format="json">JSON</button>
+      </div>
+      <pre id="export-output" class="export-pre" role="region" aria-label="Exported entry content" tabindex="0"></pre>
+    </div>
+    <div class="dialog-footer">
+      <button type="button" class="btn" id="copy-export-btn">Copy to clipboard</button>
+      <form method="dialog">
+        <button class="btn btn-primary" value="done">Done</button>
+      </form>
+    </div>
+  </dialog>
+
+  <dialog id="submit-dialog" closedby="any" aria-labelledby="submit-dialog-title">
+    <div class="dialog-header">
+      <h1 id="submit-dialog-title" class="dialog-title">Add an Entry to EDCodex</h1>
+      <button type="button" class="icon-btn" commandfor="submit-dialog" command="close" aria-label="Close submission dialog">Close</button>
+    </div>
+    <div class="dialog-body">
+      <p>Submitting or claiming a third-party tool, thread, or video requires a registered EDCodex commander account.</p>
+      <div class="panel-box">
+        <p><strong>Supported entry types:</strong> Tool, Thread / Wiki, Video / Playlist / Live channel.</p>
+      </div>
+    </div>
+    <div class="dialog-footer">
+      <form method="dialog">
+        <button class="btn" value="cancel" autofocus>Cancel</button>
+      </form>
+      <a href="https://edcodex.info/?p=register" class="btn btn-primary" target="_blank" rel="noopener">Continue to Register</a>
+    </div>
+  </dialog>
+
+  <!-- Mobile Facet Drawer Dialog (Direction C mobile filters) -->
+  <dialog id="facet-dialog" closedby="any" aria-labelledby="facet-dialog-title">
+    <div class="dialog-header">
+      <h1 id="facet-dialog-title" class="dialog-title">Filter Directory</h1>
+      <button type="button" class="icon-btn" commandfor="facet-dialog" command="close" aria-label="Close filters">Done</button>
+    </div>
+    <div class="dialog-body" id="facet-dialog-body"></div>
+  </dialog>
+
+  <!-- Floating Explore Switcher (Tweaks Panel — completely hidden when closed) -->
+  <button type="button" id="tweaks-toggle" class="btn btn-primary tweaks-launcher" aria-expanded="false" aria-controls="tweaks-panel">
+    Tweaks
+  </button>
+
+  <aside id="tweaks-panel" class="tweaks-panel" aria-label="Tweaks" hidden>
+    <div class="tweaks-header">
+      <h2 class="dialog-title">Tweaks — Explore</h2>
+      <button type="button" id="tweaks-close" class="icon-btn" aria-label="Close Tweaks">Close</button>
+    </div>
+    <div class="tweaks-group">
+      <span class="filter-label">Direction</span>
+      <div class="tweaks-options" id="direction-choices">
+        <button type="button" class="tweak-choice" data-dir="telemetry" aria-pressed="true">
+          <strong>A. Telemetry Index</strong>
+          <span>HUD strip, 1-col rows, sticky spec rail</span>
+        </button>
+        <button type="button" class="tweak-choice" data-dir="editorial" aria-pressed="false">
+          <strong>B. Swiss Catalogue Grid</strong>
+          <span>Asymmetric hero, subgrid cards, airy seams</span>
+        </button>
+        <button type="button" class="tweak-choice" data-dir="command" aria-pressed="false">
+          <strong>C. Builder Workspace</strong>
+          <span>Facet sidebar, command bar, detail header</span>
+        </button>
+      </div>
+    </div>
+    <div class="tweaks-group">
+      <span class="filter-label">Quick Jump View</span>
+      <div class="tag-list">
+        <button type="button" class="btn" data-jump="home">Home</button>
+        <button type="button" class="btn" data-jump="tools">Tools</button>
+        <button type="button" class="btn" data-jump="tool/631">Detail</button>
+      </div>
+    </div>
+  </aside>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
