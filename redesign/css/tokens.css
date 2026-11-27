@@ -1,0 +1,263 @@
+/* ==========================================================================
+   EDCodex Redesign — Design Tokens for 3 Explore Directions
+   All pairs verified for >= 4.5:1 text contrast and >= 3:1 UI contrast.
+   ========================================================================== */
+
+:root {
+  /* Fluid typography scale (max <= 2.5x min for 200%+ zoom compliance) */
+  --text-xs: clamp(0.75rem, 0.72rem + 0.15vw, 0.8125rem);
+  --text-sm: clamp(0.875rem, 0.85rem + 0.15vw, 0.9375rem);
+  --text-base: clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);
+  --text-lg: clamp(1.125rem, 1.05rem + 0.35vw, 1.3125rem);
+  --text-xl: clamp(1.375rem, 1.15rem + 1.1vw, 1.875rem);
+  --text-2xl: clamp(1.75rem, 1.3rem + 2.1vw, 2.75rem);
+
+  /* Spacing scale (8pt rhythm) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-8: 3rem;
+  --space-10: 4rem;
+  --section-gap: clamp(4.5rem, 7vw, 7.5rem);
+
+  /* Radii & Fonts (defaults, overridden per direction) */
+  --font-display: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --font-brand: 'Orbitron', 'Space Grotesk', sans-serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --container-max: 80rem;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Default Tokens (Light) — Direction A / Shared baseline */
+  --bg-canvas-light: #f6f7f9;
+  --bg-surface-light: #ffffff;
+  --bg-elevated-light: #eef1f5;
+  --bg-header-light: #ffffff;
+  --fg-primary-light: #14181f;
+  --fg-secondary-light: #434c5c;
+  --fg-muted-light: #5a6475;
+  --border-subtle-light: #d7dde6;
+  --border-strong-light: #7c8799;
+  --accent-light: #c44d00;
+  --accent-hover-light: #9e3d00;
+  --accent-fg-light: #ffffff;
+  --accent-tint-light: #fff1e8;
+  --status-active-bg-light: #e5f5ec;
+  --status-active-fg-light: #125b33;
+  --status-new-bg-light: #e6f0ff;
+  --status-new-fg-light: #134a9e;
+  --focus-ring-light: #c44d00;
+  --scrollbar-track-light: #eaedf2;
+  --scrollbar-thumb-light: #6e7787;
+
+  /* Default Tokens (Dark) */
+  --bg-canvas-dark: #0d1117;
+  --bg-surface-dark: #151b23;
+  --bg-elevated-dark: #1d2530;
+  --bg-header-dark: #11161d;
+  --fg-primary-dark: #f0f4f8;
+  --fg-secondary-dark: #c5ced9;
+  --fg-muted-dark: #93a0b2;
+  --border-subtle-dark: #2a3442;
+  --border-strong-dark: #6c7a8e;
+  --accent-dark: #ff8533;
+  --accent-hover-dark: #ffa366;
+  --accent-fg-dark: #111419;
+  --accent-tint-dark: #2c1c12;
+  --status-active-bg-dark: #133322;
+  --status-active-fg-dark: #6ee7a4;
+  --status-new-bg-dark: #162b4d;
+  --status-new-fg-dark: #8ec0ff;
+  --focus-ring-dark: #ffa366;
+  --scrollbar-track-dark: #151b23;
+  --scrollbar-thumb-dark: #68768a;
+}
+
+/* --------------------------------------------------------------------------
+   Direction B: Swiss Catalogue Grid ("editorial")
+   -------------------------------------------------------------------------- */
+:root[data-direction="editorial"] {
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+
+  --bg-canvas-light: #fafaf8;
+  --bg-surface-light: #ffffff;
+  --bg-elevated-light: #f1f0ec;
+  --bg-header-light: #fafaf8;
+  --fg-primary-light: #161614;
+  --fg-secondary-light: #474640;
+  --fg-muted-light: #615f57;
+  --border-subtle-light: #dfddd6;
+  --border-strong-light: #7c7970;
+  --accent-light: #be4700;
+  --accent-hover-light: #963800;
+  --accent-tint-light: #fdf0e8;
+
+  --bg-canvas-dark: #121210;
+  --bg-surface-dark: #1b1b18;
+  --bg-elevated-dark: #252521;
+  --bg-header-dark: #121210;
+  --fg-primary-dark: #f5f4ef;
+  --fg-secondary-dark: #cccac0;
+  --fg-muted-dark: #9e9b8f;
+  --border-subtle-dark: #31312b;
+  --border-strong-dark: #78756a;
+  --accent-dark: #ff8b3d;
+  --accent-hover-dark: #ffa66b;
+  --accent-tint-dark: #2a1d14;
+}
+
+/* --------------------------------------------------------------------------
+   Direction C: Builder Workspace Hub ("command")
+   -------------------------------------------------------------------------- */
+:root[data-direction="command"] {
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+
+  --bg-canvas-light: #f4f6fa;
+  --bg-surface-light: #ffffff;
+  --bg-elevated-light: #eaeef5;
+  --bg-header-light: #ffffff;
+  --fg-primary-light: #0f172a;
+  --fg-secondary-light: #334155;
+  --fg-muted-light: #526176;
+  --border-subtle-light: #d3dbe6;
+  --border-strong-light: #6e7f96;
+  --accent-light: #b84500;
+  --accent-hover-light: #943700;
+  --accent-tint-light: #fff0e6;
+
+  --bg-canvas-dark: #0b0f17;
+  --bg-surface-dark: #111827;
+  --bg-elevated-dark: #1b2436;
+  --bg-header-dark: #0f1522;
+  --fg-primary-dark: #f1f5f9;
+  --fg-secondary-dark: #cbd5e1;
+  --fg-muted-dark: #94a3b8;
+  --border-subtle-dark: #263248;
+  --border-strong-dark: #64748b;
+  --accent-dark: #ff8533;
+  --accent-hover-dark: #ffa163;
+  --accent-tint-dark: #291a10;
+}
+
+/* --------------------------------------------------------------------------
+   Direction A: Cockpit Telemetry Index ("telemetry")
+   -------------------------------------------------------------------------- */
+:root[data-direction="telemetry"] {
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+}
+
+/* --------------------------------------------------------------------------
+   Active Resolved Tokens (Fallback + @supports light-dark() upgrade)
+   -------------------------------------------------------------------------- */
+:root {
+  --bg-canvas: var(--bg-canvas-light);
+  --bg-surface: var(--bg-surface-light);
+  --bg-elevated: var(--bg-elevated-light);
+  --bg-header: var(--bg-header-light);
+  --fg-primary: var(--fg-primary-light);
+  --fg-secondary: var(--fg-secondary-light);
+  --fg-muted: var(--fg-muted-light);
+  --border-subtle: var(--border-subtle-light);
+  --border-strong: var(--border-strong-light);
+  --accent: var(--accent-light);
+  --accent-hover: var(--accent-hover-light);
+  --accent-fg: var(--accent-fg-light);
+  --accent-tint: var(--accent-tint-light);
+  --status-active-bg: var(--status-active-bg-light);
+  --status-active-fg: var(--status-active-fg-light);
+  --status-new-bg: var(--status-new-bg-light);
+  --status-new-fg: var(--status-new-fg-light);
+  --focus-ring: var(--focus-ring-light);
+  --scrollbar-track: var(--scrollbar-track-light);
+  --scrollbar-thumb: var(--scrollbar-thumb-light);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(:has(> head > meta[name="color-scheme"][content="light"])) {
+    --bg-canvas: var(--bg-canvas-dark);
+    --bg-surface: var(--bg-surface-dark);
+    --bg-elevated: var(--bg-elevated-dark);
+    --bg-header: var(--bg-header-dark);
+    --fg-primary: var(--fg-primary-dark);
+    --fg-secondary: var(--fg-secondary-dark);
+    --fg-muted: var(--fg-muted-dark);
+    --border-subtle: var(--border-subtle-dark);
+    --border-strong: var(--border-strong-dark);
+    --accent: var(--accent-dark);
+    --accent-hover: var(--accent-hover-dark);
+    --accent-fg: var(--accent-fg-dark);
+    --accent-tint: var(--accent-tint-dark);
+    --status-active-bg: var(--status-active-bg-dark);
+    --status-active-fg: var(--status-active-fg-dark);
+    --status-new-bg: var(--status-new-bg-dark);
+    --status-new-fg: var(--status-new-fg-dark);
+    --focus-ring: var(--focus-ring-dark);
+    --scrollbar-track: var(--scrollbar-track-dark);
+    --scrollbar-thumb: var(--scrollbar-thumb-dark);
+  }
+}
+
+:root:has(> head > meta[name="color-scheme"][content="dark"]) {
+  --bg-canvas: var(--bg-canvas-dark);
+  --bg-surface: var(--bg-surface-dark);
+  --bg-elevated: var(--bg-elevated-dark);
+  --bg-header: var(--bg-header-dark);
+  --fg-primary: var(--fg-primary-dark);
+  --fg-secondary: var(--fg-secondary-dark);
+  --fg-muted: var(--fg-muted-dark);
+  --border-subtle: var(--border-subtle-dark);
+  --border-strong: var(--border-strong-dark);
+  --accent: var(--accent-dark);
+  --accent-hover: var(--accent-hover-dark);
+  --accent-fg: var(--accent-fg-dark);
+  --accent-tint: var(--accent-tint-dark);
+  --status-active-bg: var(--status-active-bg-dark);
+  --status-active-fg: var(--status-active-fg-dark);
+  --status-new-bg: var(--status-new-bg-dark);
+  --status-new-fg: var(--status-new-fg-dark);
+  --focus-ring: var(--focus-ring-dark);
+  --scrollbar-track: var(--scrollbar-track-dark);
+  --scrollbar-thumb: var(--scrollbar-thumb-dark);
+}
+
+@supports (color: light-dark(white, black)) {
+  :root {
+    --bg-canvas: light-dark(var(--bg-canvas-light), var(--bg-canvas-dark));
+    --bg-surface: light-dark(var(--bg-surface-light), var(--bg-surface-dark));
+    --bg-elevated: light-dark(var(--bg-elevated-light), var(--bg-elevated-dark));
+    --bg-header: light-dark(var(--bg-header-light), var(--bg-header-dark));
+    --fg-primary: light-dark(var(--fg-primary-light), var(--fg-primary-dark));
+    --fg-secondary: light-dark(var(--fg-secondary-light), var(--fg-secondary-dark));
+    --fg-muted: light-dark(var(--fg-muted-light), var(--fg-muted-dark));
+    --border-subtle: light-dark(var(--border-subtle-light), var(--border-subtle-dark));
+    --border-strong: light-dark(var(--border-strong-light), var(--border-strong-dark));
+    --accent: light-dark(var(--accent-light), var(--accent-dark));
+    --accent-hover: light-dark(var(--accent-hover-light), var(--accent-hover-dark));
+    --accent-fg: light-dark(var(--accent-fg-light), var(--accent-fg-dark));
+    --accent-tint: light-dark(var(--accent-tint-light), var(--accent-tint-dark));
+    --status-active-bg: light-dark(var(--status-active-bg-light), var(--status-active-bg-dark));
+    --status-active-fg: light-dark(var(--status-active-fg-light), var(--status-active-fg-dark));
+    --status-new-bg: light-dark(var(--status-new-bg-light), var(--status-new-bg-dark));
+    --status-new-fg: light-dark(var(--status-new-fg-light), var(--status-new-fg-dark));
+    --focus-ring: light-dark(var(--focus-ring-light), var(--focus-ring-dark));
+    --scrollbar-track: light-dark(var(--scrollbar-track-light), var(--scrollbar-track-dark));
+    --scrollbar-thumb: light-dark(var(--scrollbar-thumb-light), var(--scrollbar-thumb-dark));
+  }
+}

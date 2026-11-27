@@ -1,0 +1,386 @@
+/* ==========================================================================
+   EDCodex Redesign — Base Platform Rules (Modern Web Guidance Compliant)
+   ========================================================================== */
+
+:root {
+  /* MANDATORY: base declaration stays light dark; meta tag drives overrides */
+  color-scheme: light dark;
+  accent-color: var(--accent);
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  scrollbar-gutter: stable;
+  view-transition-name: none;
+
+  &:has(> head > meta[name="color-scheme"][content="dark"]) {
+    color-scheme: dark;
+  }
+
+  &:has(> head > meta[name="color-scheme"][content="light"]) {
+    color-scheme: light;
+  }
+}
+
+html {
+  container-type: scroll-state;
+  box-sizing: border-box;
+  font-size: 100%;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  min-block-size: 100dvb;
+  background-color: var(--bg-canvas);
+  color: var(--fg-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.55;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* WebKit fallback for scrollbar-color (do NOT animate scrollbar-color) */
+@supports not (scrollbar-color: auto) {
+  :root {
+    scrollbar-width: auto;
+  }
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+  }
+}
+
+/* Typography & Media */
+h1, h2, h3, h4 {
+  margin: 0;
+  font-family: var(--font-display);
+  line-height: 1.2;
+  color: var(--fg-primary);
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--text-2xl);
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: var(--text-xl);
+  letter-spacing: -0.015em;
+}
+
+h3 {
+  font-size: var(--text-lg);
+}
+
+p, li, dd {
+  text-wrap: pretty;
+}
+
+p {
+  margin: 0;
+}
+
+img, svg, video {
+  display: block;
+  max-inline-size: 100%;
+}
+
+a {
+  color: var(--accent);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.18em;
+}
+
+a:hover {
+  color: var(--accent-hover);
+  text-decoration-thickness: 2px;
+}
+
+button, input, select, textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  transition: background-color 150ms var(--ease-out), border-color 150ms var(--ease-out), scale 150ms var(--ease-out);
+}
+
+button:active {
+  scale: 0.97;
+}
+
+/* Focus Visibility (WCAG 2.4.7 & 1.4.11 >= 3:1) */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 3px;
+}
+
+/* Visually hidden utility */
+.visually-hidden:where(:not(:focus-within, :active)) {
+  position: absolute !important;
+  clip-path: inset(50%) !important;
+  overflow: hidden !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+}
+
+.skip-link {
+  position: fixed;
+  inset-block-start: var(--space-3);
+  inset-inline-start: var(--space-3);
+  z-index: 200;
+  background: var(--accent);
+  color: var(--accent-fg);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* Target Sizes (WCAG 2.5.8) */
+:where(button, [role="button"], select, .nav-link, .icon-btn) {
+  min-block-size: 24px;
+  min-inline-size: 24px;
+}
+
+@media (pointer: coarse) {
+  :where(button, [role="button"], select, .nav-link, .icon-btn) {
+    min-block-size: 44px;
+    min-inline-size: 44px;
+  }
+}
+
+/* Container Layout (horizontal padding-inline kept separate from vertical rhythm) */
+.wrap {
+  inline-size: 100%;
+  max-inline-size: var(--container-max);
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 3vw, 2rem);
+}
+
+/* Sticky Top Bar with Scroll-State Auto-Hide */
+.top-bar {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 40;
+  background: var(--bg-header);
+  border-block-end: 1px solid var(--border-subtle);
+  transition: transform 220ms var(--ease-out);
+}
+
+@container scroll-state((scrolled: bottom) and (scrollable: top)) {
+  .top-bar {
+    transform: translateY(-100%);
+  }
+}
+
+.top-bar.is-hidden:not(:focus-within) {
+  transform: translateY(-100%);
+}
+
+.top-bar:focus-within {
+  transform: none;
+}
+
+:target {
+  scroll-margin-block-start: 5rem;
+}
+
+/* Native <dialog> Modals */
+dialog {
+  margin: auto;
+  padding: 0;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  background: var(--bg-surface);
+  color: var(--fg-primary);
+  max-inline-size: min(42rem, calc(100% - 2rem));
+  inline-size: 100%;
+  box-shadow: 0 24px 60px rgb(0 0 0 / 0.32);
+}
+
+dialog:modal {
+  overscroll-behavior: contain;
+}
+
+dialog::backdrop {
+  background: rgb(10 13 18 / 0.65);
+  backdrop-filter: blur(4px);
+  overflow: hidden;
+  overscroll-behavior: contain;
+}
+
+/* Native [popover] & Polyfill Rules */
+[popover] {
+  margin: 0;
+  padding: var(--space-3);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+  color: var(--fg-primary);
+  box-shadow: 0 14px 36px rgb(0 0 0 / 0.22);
+}
+
+[popover]:is(:popover-open, .\:popover-open) {
+  display: block;
+}
+
+@supports not selector(:popover-open) {
+  [popover]:not(.\:popover-open) {
+    display: none;
+  }
+}
+
+@supports (position-area: block-end) {
+  [popover].anchored-overlay {
+    inset: auto;
+    margin: 0;
+    position-area: block-end span-inline-end;
+    position-try-fallbacks: flip-block, flip-inline, flip-block flip-inline;
+    margin-block-start: var(--space-2);
+  }
+
+  [popover="hint"] {
+    inset: auto;
+    margin: 0;
+    position-area: block-start;
+    position-try-fallbacks: flip-block;
+    margin-block-end: var(--space-2);
+  }
+}
+
+/* Hint Popover Tooltips */
+[popover="hint"] {
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  max-inline-size: 18rem;
+  border-radius: var(--radius-sm);
+}
+
+[interestfor] {
+  --interest-delay-start: 0.15s;
+  interest-delay-start: var(--interest-delay-start);
+  --interest-delay-end: 0.1s;
+  interest-delay-end: var(--interest-delay-end);
+}
+
+/* Branded Select Styling with Graceful Fallback */
+.field-select {
+  background-color: var(--bg-surface);
+  color: var(--fg-primary);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  padding: 0.45rem 0.75rem;
+  font-size: var(--text-sm);
+  min-block-size: 2.35rem;
+}
+
+.field-select,
+.field-select::picker(select) {
+  appearance: base-select;
+}
+
+.field-select::picker(select) {
+  background-color: var(--bg-surface);
+  color: var(--fg-primary);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  padding: var(--space-1);
+  box-shadow: 0 12px 30px rgb(0 0 0 / 0.22);
+}
+
+.field-select option {
+  padding: 0.45rem 0.65rem;
+  border-radius: var(--radius-sm);
+  color: var(--fg-primary);
+}
+
+.field-select option:hover {
+  background-color: var(--bg-elevated);
+}
+
+.field-select::picker-icon,
+.field-select option::checkmark {
+  color: var(--accent);
+}
+
+/* Group View Transitions */
+::view-transition {
+  pointer-events: none;
+}
+
+::view-transition-group(.tool-item) {
+  animation-duration: 240ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Theme Icon Branching (works without JS) */
+.theme-branch-dark {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(:has(> head > meta[name="color-scheme"][content="light"])) .theme-branch-light {
+    display: none;
+  }
+  :root:not(:has(> head > meta[name="color-scheme"][content="light"])) .theme-branch-dark {
+    display: inline-flex;
+  }
+}
+
+:root:has(> head > meta[name="color-scheme"][content="dark"]) .theme-branch-light {
+  display: none;
+}
+:root:has(> head > meta[name="color-scheme"][content="dark"]) .theme-branch-dark {
+  display: inline-flex;
+}
+
+/* Forced Colors Mode Support */
+@media (forced-colors: active) {
+  .tool-card,
+  .panel-box,
+  .nav-pill.is-active,
+  .btn,
+  dialog,
+  [popover] {
+    border: 1px solid CanvasText;
+  }
+  .btn-primary {
+    background: Highlight;
+    color: HighlightText;
+    border-color: Highlight;
+  }
+  :where(a, button, input, select, summary):focus-visible {
+    outline: 2px solid Highlight;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
